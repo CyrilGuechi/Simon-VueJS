@@ -14,7 +14,7 @@ const vm = new Vue({
     computed: {
         score() {
             const value = this.sequence.length - 1;
-            return ( value < 0 ) ? `Level : 0` : `Level : ${value}`;
+            return ( value < 0 ) ? `Level : 1` : `Level : ${value + 1}`;
         }
     },
     methods: {
