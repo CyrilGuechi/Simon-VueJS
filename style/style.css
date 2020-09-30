@@ -1,4 +1,4 @@
-.carre {
+.square {
     display: inline-block;
     width:200px;
     height:200px;
@@ -6,15 +6,15 @@
     cursor:pointer;
 }
 
-.bleu {
+.blue {
     background-color:blue;
 }
-.rouge {
+.red {
     background-color:red;
 }
-.vert {
+.green {
     background-color:green;
 }
-.jaune {
+.yellow {
     background-color:yellow;
 }

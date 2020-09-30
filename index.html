@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+
 </head>
 <body>
     <div id="app">
-        <button>
+        <button @click="newGame">
             NOUVELLE PARTIE
         </button>
         <hr>
         ** Nous afficherons ici le score **
         <hr>
         <div>
-            <span class="carre"></span>
-            <span class="carre"></span>
+            <span class="square" :class="{ blue: topLeft }"></span>
+            <span class="square" :class="{ red: topRight }"></span>
         </div>
         <div>
-            <span class="carre"></span>
-            <span class="carre"></span>
+            <span class="square" :class="{ green: botLeft }"></span>
+            <span class="square" :class="{ yellow: botRight }"></span>
         </div>
     </div>
+
 
 
 
