@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
 </head>
 <body>
     <div id="app">
-        <button @click="newGame">
-            NOUVELLE PARTIE
-        </button>
-        <hr>
-        <span>{{counter}}</span>
-        <hr>
-        <div>
-            <span class="square" @click="selectSquare('topLeft')" :class="{ blue: topLeft }"></span>
-            <span class="square" @click="selectSquare('topRight')" :class="{ red: topRight }"></span>
-        </div>
-        <div>
-            <span class="square" @click="selectSquare('botLeft')" :class="{ green: botLeft }"></span>
-            <span class="square" @click="selectSquare('botRight')" :class="{ yellow: botRight }"></span>
+<!--            <button @click="newGame">-->
+<!--                NOUVELLE PARTIE-->
+<!--            </button>-->
+<!--            <h3 class="result">{{score}}</h3>-->
+<!--            <div>-->
+<!--                <span class="square" @click="selectSquare('topLeft')" :class="{ blue: topLeft }"></span>-->
+<!--                <span class="square" @click="selectSquare('topRight')" :class="{ red: topRight }"></span>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <span class="square" @click="selectSquare('botLeft')" :class="{ green: botLeft }"></span>-->
+<!--                <span class="square" @click="selectSquare('botRight')" :class="{ yellow: botRight }"></span>-->
+<!--            </div>-->
+
+        <div id="gameBoard">
+            <div id="middleCircle">
+                <h1 id="title">Simon</h1>
+                <p @click="newGame">Cliquez ici pour lancer la partie</p>
+                <h2 id="level">{{ score }}</h2>
+                <h3></h3>
+
+            </div>
+            <div class="square" @click="selectSquare('topLeft')" :class="{ blue: topLeft }"></div>
+            <div class="square" @click="selectSquare('topRight')" :class="{ red: topRight }"></div>
+            <div class="square" @click="selectSquare('botLeft')" :class="{ green: botLeft }"></div>
+            <div class="square" @click="selectSquare('botRight')" :class="{ yellow: botRight }"></div>
         </div>
     </div>
 

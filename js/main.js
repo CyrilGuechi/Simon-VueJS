@@ -9,6 +9,13 @@ const vm = new Vue({
         sequence: [],
         squareMap: ['topLeft','topRight','botLeft','botRight'],
         counter: 0
+
+    },
+    computed: {
+        score() {
+            const value = this.sequence.length - 1;
+            return ( value < 0 ) ? `Level : 0` : `Level : ${value}`;
+        }
     },
     methods: {
         addNewElToSequence(){
@@ -23,43 +30,41 @@ const vm = new Vue({
         },
         newGame() {
             this.sequence = [];
-            this.nextTurn()
-            // setTimeout(() => {
-            //     this.reset()
-            // }, 300);
+            this.nextTurn();
         },
         nextTurn() {
             this.addNewElToSequence();
             this.reset();
             this.playSequence(this.temp[0]);
         },
-        playSequence(int) {
-            this[int] = true;
-            setTimeout(() => {
-                this.reset();
-                this.temp.shift();
-                if(this.temp[0]) {
-                    this.playSequence(this.temp[0])
-                } else {
-                    this.temp = this.sequence.slice();
-                }
+        playSequence(square) {
+            setTimeout(function () {
+                vm[square] = true;
+                setTimeout(function () {
+                    vm.reset();
+                    vm.temp.shift();
+                    if (vm.temp[0]) {
+                        vm.playSequence(vm.temp[0]);
+                    } else {
+                        vm.temp = vm.sequence.slice();
+                    }
+                }, 400);
             }, 400);
         },
-        selectSquare(int) {
-            if(int === this.temp[0]) {
-                this[int] = true;
-                setTimeout(() => {
-                    this.reset();
-                    this.temp.shift();
+        selectSquare(square) {
+            if(square === this.temp[0]) {
+                vm[square] = true;
+                setTimeout(function() {
+                    vm.reset();
+                    vm.temp.shift();
 
-                    if(!this.temp[0]) {
-                        this.nextTurn();
+                    if(!vm.temp[0]) {
+                        vm.nextTurn();
                     }
-                    this.counter++
-                }, 300)
+                }, 400)
             }
             else {
-                this.counter = 0
+                alert('Vous avez perdu')
             }
         }
 
