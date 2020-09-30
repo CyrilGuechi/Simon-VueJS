@@ -25,7 +25,7 @@ const vm = new Vue({
             this[this.sequence[0]] = true
             setTimeout(() => {
                 this.reset()
-            }, 1000)
+            }, 300)
         },
 
     }
