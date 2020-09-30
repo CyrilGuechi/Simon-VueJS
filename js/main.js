@@ -5,13 +5,15 @@ const vm = new Vue({
         topRight: false,
         botLeft: false,
         botRight: false,
-        tmp: [],
+        temp: [],
         sequence: [],
-        squareMap: ['topLeft','topRight','botLeft','botRight']
+        squareMap: ['topLeft','topRight','botLeft','botRight'],
+        counter: 0
     },
     methods: {
         addNewElToSequence(){
            this.sequence.push(this.squareMap[Math.floor(Math.random() * 4)]);
+           this.temp = this.sequence.slice();
         },
         reset() {
             this.topLeft = false;
@@ -21,12 +23,45 @@ const vm = new Vue({
         },
         newGame() {
             this.sequence = [];
-            this.addNewElToSequence();
-            this[this.sequence[0]] = true
-            setTimeout(() => {
-                this.reset()
-            }, 300)
+            this.nextTurn()
+            // setTimeout(() => {
+            //     this.reset()
+            // }, 300);
         },
+        nextTurn() {
+            this.addNewElToSequence();
+            this.reset();
+            this.playSequence(this.temp[0]);
+        },
+        playSequence(int) {
+            this[int] = true;
+            setTimeout(() => {
+                this.reset();
+                this.temp.shift();
+                if(this.temp[0]) {
+                    this.playSequence(this.temp[0])
+                } else {
+                    this.temp = this.sequence.slice();
+                }
+            }, 400);
+        },
+        selectSquare(int) {
+            if(int === this.temp[0]) {
+                this[int] = true;
+                setTimeout(() => {
+                    this.reset();
+                    this.temp.shift();
+
+                    if(!this.temp[0]) {
+                        this.nextTurn();
+                    }
+                    this.counter++
+                }, 300)
+            }
+            else {
+                this.counter = 0
+            }
+        }
 
     }
 })

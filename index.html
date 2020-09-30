@@ -13,15 +13,15 @@
             NOUVELLE PARTIE
         </button>
         <hr>
-        ** Nous afficherons ici le score **
+        <span>{{counter}}</span>
         <hr>
         <div>
-            <span class="square" :class="{ blue: topLeft }"></span>
-            <span class="square" :class="{ red: topRight }"></span>
+            <span class="square" @click="selectSquare('topLeft')" :class="{ blue: topLeft }"></span>
+            <span class="square" @click="selectSquare('topRight')" :class="{ red: topRight }"></span>
         </div>
         <div>
-            <span class="square" :class="{ green: botLeft }"></span>
-            <span class="square" :class="{ yellow: botRight }"></span>
+            <span class="square" @click="selectSquare('botLeft')" :class="{ green: botLeft }"></span>
+            <span class="square" @click="selectSquare('botRight')" :class="{ yellow: botRight }"></span>
         </div>
     </div>
 
